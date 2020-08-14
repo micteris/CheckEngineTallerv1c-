@@ -1,0 +1,398 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CB67003F-D3A0-4EA5-905E-86D23D5B5C99}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>CheckEngineTaller</RootNamespace>
+    <AssemblyName>CheckEngineTaller</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Gestion\gcliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gestion\gcliente.Designer.cs">
+      <DependentUpon>gcliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion\gVehiculos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gestion\gVehiculos.Designer.cs">
+      <DependentUpon>gVehiculos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Inicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Inicio.Designer.cs">
+      <DependentUpon>Inicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\mCaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\mCaja.Designer.cs">
+      <DependentUpon>mCaja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\mClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\mClientes.Designer.cs">
+      <DependentUpon>mClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\mEmpleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\mEmpleados.Designer.cs">
+      <DependentUpon>mEmpleados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\mEstacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\mEstacion.Designer.cs">
+      <DependentUpon>mEstacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\mMecanicos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\mMecanicos.Designer.cs">
+      <DependentUpon>mMecanicos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\mPedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\mPedidos.Designer.cs">
+      <DependentUpon>mPedidos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\mProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\mProductos.Designer.cs">
+      <DependentUpon>mProductos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\mProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\mProveedor.Designer.cs">
+      <DependentUpon>mProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\mProyectos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\mProyectos.Designer.cs">
+      <DependentUpon>mProyectos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\mVehiculos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\mVehiculos.Designer.cs">
+      <DependentUpon>mVehiculos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Principal.Designer.cs">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion\gCajacs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gestion\gCajacs.Designer.cs">
+      <DependentUpon>gCajacs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion\gEmpleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gestion\gEmpleados.Designer.cs">
+      <DependentUpon>gEmpleados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion\gEstacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gestion\gEstacion.Designer.cs">
+      <DependentUpon>gEstacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion\gMecanicos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gestion\gMecanicos.Designer.cs">
+      <DependentUpon>gMecanicos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion\gPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gestion\gPassword.Designer.cs">
+      <DependentUpon>gPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion\gPedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gestion\gPedidos.Designer.cs">
+      <DependentUpon>gPedidos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion\gProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gestion\gProductos.Designer.cs">
+      <DependentUpon>gProductos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion\gProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gestion\gProveedor.Designer.cs">
+      <DependentUpon>gProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion\gProyectos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gestion\gProyectos.Designer.cs">
+      <DependentUpon>gProyectos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\dbTaller.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbTaller.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\dbTaller.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbTaller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\dbTaller.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbTaller.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\T_Actividad.cs">
+      <DependentUpon>dbTaller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\T_Bitacora.cs">
+      <DependentUpon>dbTaller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\T_Caja.cs">
+      <DependentUpon>dbTaller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\T_Cliente.cs">
+      <DependentUpon>dbTaller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\T_Detallefactura.cs">
+      <DependentUpon>dbTaller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\T_Empleado.cs">
+      <DependentUpon>dbTaller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\T_Estacion.cs">
+      <DependentUpon>dbTaller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\T_Factura.cs">
+      <DependentUpon>dbTaller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\T_Gastos.cs">
+      <DependentUpon>dbTaller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\T_Manodeobra.cs">
+      <DependentUpon>dbTaller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\T_Mecanico.cs">
+      <DependentUpon>dbTaller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\T_Pago.cs">
+      <DependentUpon>dbTaller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\T_Pedido.cs">
+      <DependentUpon>dbTaller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\T_Producto.cs">
+      <DependentUpon>dbTaller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\T_Proveedores.cs">
+      <DependentUpon>dbTaller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\T_Proyecto.cs">
+      <DependentUpon>dbTaller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\T_Vehiculo.cs">
+      <DependentUpon>dbTaller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Servicios\ServiciosCaja.cs" />
+    <Compile Include="Servicios\ServiciosCliente.cs" />
+    <Compile Include="Servicios\ServiciosEmpleados.cs" />
+    <Compile Include="Servicios\ServiciosEstacion.cs" />
+    <Compile Include="Servicios\ServiciosMecanicos.cs" />
+    <Compile Include="Servicios\ServiciosPedidos.cs" />
+    <Compile Include="Servicios\ServiciosProductos.cs" />
+    <Compile Include="Servicios\ServiciosProveedor.cs" />
+    <Compile Include="Servicios\ServiciosProyectos.cs" />
+    <Compile Include="Servicios\ServiciosVehiculos.cs" />
+    <EmbeddedResource Include="Gestion\gCajacs.resx">
+      <DependentUpon>gCajacs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gestion\gcliente.resx">
+      <DependentUpon>gcliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gestion\gEmpleados.resx">
+      <DependentUpon>gEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gestion\gEstacion.resx">
+      <DependentUpon>gEstacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gestion\gMecanicos.resx">
+      <DependentUpon>gMecanicos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gestion\gPassword.resx">
+      <DependentUpon>gPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gestion\gPedidos.resx">
+      <DependentUpon>gPedidos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gestion\gProductos.resx">
+      <DependentUpon>gProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gestion\gProveedor.resx">
+      <DependentUpon>gProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gestion\gProyectos.resx">
+      <DependentUpon>gProyectos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gestion\gVehiculos.resx">
+      <DependentUpon>gVehiculos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Inicio.resx">
+      <DependentUpon>Inicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\mCaja.resx">
+      <DependentUpon>mCaja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\mClientes.resx">
+      <DependentUpon>mClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\mEmpleados.resx">
+      <DependentUpon>mEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\mEstacion.resx">
+      <DependentUpon>mEstacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\mMecanicos.resx">
+      <DependentUpon>mMecanicos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\mPedidos.resx">
+      <DependentUpon>mPedidos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\mProductos.resx">
+      <DependentUpon>mProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\mProveedor.resx">
+      <DependentUpon>mProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\mProyectos.resx">
+      <DependentUpon>mProyectos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\mVehiculos.resx">
+      <DependentUpon>mVehiculos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Principal.resx">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EntityDeploy Include="Modelo\dbTaller.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>dbTaller.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Modelo\dbTaller.edmx.diagram">
+      <DependentUpon>dbTaller.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Modelo\dbTaller.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>dbTaller.edmx</DependentUpon>
+      <LastGenOutput>dbTaller.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Modelo\dbTaller.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>dbTaller.edmx</DependentUpon>
+      <LastGenOutput>dbTaller.cs</LastGenOutput>
+    </Content>
+    <None Include="Multimedia\Check Engine Taller1.jpeg" />
+    <None Include="Multimedia\Background.png" />
+    <None Include="Multimedia\1064297.jpg" />
+    <None Include="Multimedia\Log.png" />
+    <None Include="Multimedia\Login.png" />
+    <None Include="Multimedia\Check Engine Taller.jpeg" />
+    <None Include="Multimedia\3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

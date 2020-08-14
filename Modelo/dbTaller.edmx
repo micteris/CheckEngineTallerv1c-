@@ -1,0 +1,1332 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBTallerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="T_Actividad">
+          <Key>
+            <PropertyRef Name="Ac_Id" />
+          </Key>
+          <Property Name="Ac_Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Ac_Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ac_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="M_Id" Type="int" Nullable="false" />
+          <Property Name="Pr_Id" Type="int" />
+          <Property Name="Pr_Cantidad" Type="int" />
+        </EntityType>
+        <EntityType Name="T_Bitacora">
+          <Key>
+            <PropertyRef Name="B_Id" />
+          </Key>
+          <Property Name="B_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="B_Formulario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="B_Funcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="B_Llave" Type="int" Nullable="false" />
+          <Property Name="E_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_Caja">
+          <Key>
+            <PropertyRef Name="C_Id" />
+          </Key>
+          <Property Name="C_SaldoFinal" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="C_SaldoInicial" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="C_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="E_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_Cliente">
+          <Key>
+            <PropertyRef Name="CI_ID" />
+          </Key>
+          <Property Name="CI_Direccion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CI_Identificacion" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CI_Nombre1" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CI_Nombre2" Type="varchar" MaxLength="50" />
+          <Property Name="CI_Apellido1" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CI_Apellido2" Type="varchar" MaxLength="50" />
+          <Property Name="CI_Telefono" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CI_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_Detallefactura">
+          <Key>
+            <PropertyRef Name="Pr_Id" />
+            <PropertyRef Name="Mdo_Id" />
+            <PropertyRef Name="Fc_id" />
+          </Key>
+          <Property Name="Pr_Id" Type="int" Nullable="false" />
+          <Property Name="Mdo_Id" Type="int" Nullable="false" />
+          <Property Name="DF_Cantidad" Type="int" Nullable="false" />
+          <Property Name="C_Id" Type="int" Nullable="false" />
+          <Property Name="Fc_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_Empleado">
+          <Key>
+            <PropertyRef Name="E_ID" />
+          </Key>
+          <Property Name="E_Direccion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="E_edad" Type="int" Nullable="false" />
+          <Property Name="E_Nombre1" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="E_Nombre2" Type="varchar" MaxLength="50" />
+          <Property Name="E_Apellido1" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="E_Apellido2" Type="varchar" MaxLength="50" />
+          <Property Name="E_Salario" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="E_TipoSalario" Type="varchar" MaxLength="10" />
+          <Property Name="E_Tipo" Type="varchar" MaxLength="20" />
+          <Property Name="E_Telefono" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="E_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="E_Identificacion" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="E_Usuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="E_Password" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_Estacion">
+          <Key>
+            <PropertyRef Name="Es_Id" />
+          </Key>
+          <Property Name="Es_Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ac_Id" Type="int" Nullable="false" />
+          <Property Name="Es_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_Factura">
+          <Key>
+            <PropertyRef Name="Fc_Id" />
+          </Key>
+          <Property Name="Fc_Impuesto" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="Fc_Total" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="Fc_Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Fc_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fc_Descuento" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="FC_Subtotal" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="C_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_Gastos">
+          <Key>
+            <PropertyRef Name="G_Id" />
+          </Key>
+          <Property Name="E_Id" Type="int" />
+          <Property Name="Pd_Id" Type="int" />
+          <Property Name="G_FacturaID" Type="int" />
+          <Property Name="G_Estado" Type="bit" Nullable="false" />
+          <Property Name="G_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_Manodeobra">
+          <Key>
+            <PropertyRef Name="Mdo_ID" />
+          </Key>
+          <Property Name="Mdo_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Mdo_Monto" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="Mdo_TipoActividad" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_Mecanico">
+          <Key>
+            <PropertyRef Name="M_ID" />
+          </Key>
+          <Property Name="E_ID" Type="int" Nullable="false" />
+          <Property Name="M_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="M_Especialidad" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="M_Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_Pago">
+          <Key>
+            <PropertyRef Name="G_Id" />
+            <PropertyRef Name="C_Id" />
+          </Key>
+          <Property Name="G_Id" Type="int" Nullable="false" />
+          <Property Name="C_Id" Type="int" Nullable="false" />
+          <Property Name="Pag_Cantidad" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_Pedido">
+          <Key>
+            <PropertyRef Name="Pd_Id" />
+          </Key>
+          <Property Name="Pd_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pr_Id" Type="int" Nullable="false" />
+          <Property Name="Pd_Cantidad" Type="int" Nullable="false" />
+          <Property Name="Pd_Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Pd_PrecioUnitario" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_Producto">
+          <Key>
+            <PropertyRef Name="Pr_Id" />
+          </Key>
+          <Property Name="Pr_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="P_Id" Type="int" Nullable="false" />
+          <Property Name="Pr_CodigoRefaccion" Type="int" Nullable="false" />
+          <Property Name="Pr_Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Pr_Existencia" Type="int" Nullable="false" />
+          <Property Name="Pr_Marca" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pr_Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pr_PrecioUnitario" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="Pr_Descuento" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="Pr_ExistenciaMin" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_Proveedores">
+          <Key>
+            <PropertyRef Name="P_Id" />
+          </Key>
+          <Property Name="P_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="P_Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="P_FormaPago" Type="varchar" MaxLength="25" />
+          <Property Name="P_Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_Proyecto">
+          <Key>
+            <PropertyRef Name="Pry_Id" />
+          </Key>
+          <Property Name="Es_Id" Type="int" Nullable="false" />
+          <Property Name="Mdo_Id" Type="int" Nullable="false" />
+          <Property Name="Pry_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="V_id" Type="int" Nullable="false" />
+          <Property Name="Pry_Comentario" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_Vehiculo">
+          <Key>
+            <PropertyRef Name="V_ID" />
+          </Key>
+          <Property Name="CI_ID" Type="int" Nullable="false" />
+          <Property Name="V_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="V_Color" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="V_Estado" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="V_Marca" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="V_Modelo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="V_Placa" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__T_Activid__Pr_Id__5535A963">
+          <End Role="T_Producto" Type="Self.T_Producto" Multiplicity="0..1" />
+          <End Role="T_Actividad" Type="Self.T_Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Producto">
+              <PropertyRef Name="Pr_Id" />
+            </Principal>
+            <Dependent Role="T_Actividad">
+              <PropertyRef Name="Pr_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Activida__M_Id__5441852A">
+          <End Role="T_Mecanico" Type="Self.T_Mecanico" Multiplicity="1" />
+          <End Role="T_Actividad" Type="Self.T_Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Mecanico">
+              <PropertyRef Name="M_ID" />
+            </Principal>
+            <Dependent Role="T_Actividad">
+              <PropertyRef Name="M_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Bitacora__E_Id__6FE99F9F">
+          <End Role="T_Empleado" Type="Self.T_Empleado" Multiplicity="1" />
+          <End Role="T_Bitacora" Type="Self.T_Bitacora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Empleado">
+              <PropertyRef Name="E_ID" />
+            </Principal>
+            <Dependent Role="T_Bitacora">
+              <PropertyRef Name="E_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Caja__E_Id__46E78A0C">
+          <End Role="T_Empleado" Type="Self.T_Empleado" Multiplicity="1" />
+          <End Role="T_Caja" Type="Self.T_Caja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Empleado">
+              <PropertyRef Name="E_ID" />
+            </Principal>
+            <Dependent Role="T_Caja">
+              <PropertyRef Name="E_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Detalle__Fc_id__656C112C">
+          <End Role="T_Factura" Type="Self.T_Factura" Multiplicity="1" />
+          <End Role="T_Detallefactura" Type="Self.T_Detallefactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Factura">
+              <PropertyRef Name="Fc_Id" />
+            </Principal>
+            <Dependent Role="T_Detallefactura">
+              <PropertyRef Name="Fc_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Detalle__Mdo_I__6477ECF3">
+          <End Role="T_Manodeobra" Type="Self.T_Manodeobra" Multiplicity="1" />
+          <End Role="T_Detallefactura" Type="Self.T_Detallefactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Manodeobra">
+              <PropertyRef Name="Mdo_ID" />
+            </Principal>
+            <Dependent Role="T_Detallefactura">
+              <PropertyRef Name="Mdo_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Detalle__Pr_Id__6383C8BA">
+          <End Role="T_Producto" Type="Self.T_Producto" Multiplicity="1" />
+          <End Role="T_Detallefactura" Type="Self.T_Detallefactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Producto">
+              <PropertyRef Name="Pr_Id" />
+            </Principal>
+            <Dependent Role="T_Detallefactura">
+              <PropertyRef Name="Pr_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Estacio__Ac_Id__5812160E">
+          <End Role="T_Actividad" Type="Self.T_Actividad" Multiplicity="1" />
+          <End Role="T_Estacion" Type="Self.T_Estacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Actividad">
+              <PropertyRef Name="Ac_Id" />
+            </Principal>
+            <Dependent Role="T_Estacion">
+              <PropertyRef Name="Ac_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Factura__C_Id__4BAC3F29">
+          <End Role="T_Caja" Type="Self.T_Caja" Multiplicity="1" />
+          <End Role="T_Factura" Type="Self.T_Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Caja">
+              <PropertyRef Name="C_Id" />
+            </Principal>
+            <Dependent Role="T_Factura">
+              <PropertyRef Name="C_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Gastos__E_Id__68487DD7">
+          <End Role="T_Empleado" Type="Self.T_Empleado" Multiplicity="0..1" />
+          <End Role="T_Gastos" Type="Self.T_Gastos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Empleado">
+              <PropertyRef Name="E_ID" />
+            </Principal>
+            <Dependent Role="T_Gastos">
+              <PropertyRef Name="E_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Gastos__Pd_Id__693CA210">
+          <End Role="T_Pedido" Type="Self.T_Pedido" Multiplicity="0..1" />
+          <End Role="T_Gastos" Type="Self.T_Gastos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Pedido">
+              <PropertyRef Name="Pd_Id" />
+            </Principal>
+            <Dependent Role="T_Gastos">
+              <PropertyRef Name="Pd_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Mecanico__E_ID__440B1D61">
+          <End Role="T_Empleado" Type="Self.T_Empleado" Multiplicity="1" />
+          <End Role="T_Mecanico" Type="Self.T_Mecanico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Empleado">
+              <PropertyRef Name="E_ID" />
+            </Principal>
+            <Dependent Role="T_Mecanico">
+              <PropertyRef Name="E_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Pago__C_Id__6D0D32F4">
+          <End Role="T_Caja" Type="Self.T_Caja" Multiplicity="1" />
+          <End Role="T_Pago" Type="Self.T_Pago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Caja">
+              <PropertyRef Name="C_Id" />
+            </Principal>
+            <Dependent Role="T_Pago">
+              <PropertyRef Name="C_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Pago__G_Id__6C190EBB">
+          <End Role="T_Gastos" Type="Self.T_Gastos" Multiplicity="1" />
+          <End Role="T_Pago" Type="Self.T_Pago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Gastos">
+              <PropertyRef Name="G_Id" />
+            </Principal>
+            <Dependent Role="T_Pago">
+              <PropertyRef Name="G_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Pedido__Pr_Id__5AEE82B9">
+          <End Role="T_Producto" Type="Self.T_Producto" Multiplicity="1" />
+          <End Role="T_Pedido" Type="Self.T_Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Producto">
+              <PropertyRef Name="Pr_Id" />
+            </Principal>
+            <Dependent Role="T_Pedido">
+              <PropertyRef Name="Pr_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Producto__P_Id__5165187F">
+          <End Role="T_Proveedores" Type="Self.T_Proveedores" Multiplicity="1" />
+          <End Role="T_Producto" Type="Self.T_Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Proveedores">
+              <PropertyRef Name="P_Id" />
+            </Principal>
+            <Dependent Role="T_Producto">
+              <PropertyRef Name="P_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Proyect__Es_Id__5DCAEF64">
+          <End Role="T_Estacion" Type="Self.T_Estacion" Multiplicity="1" />
+          <End Role="T_Proyecto" Type="Self.T_Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Estacion">
+              <PropertyRef Name="Es_Id" />
+            </Principal>
+            <Dependent Role="T_Proyecto">
+              <PropertyRef Name="Es_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Proyect__Mdo_I__5EBF139D">
+          <End Role="T_Manodeobra" Type="Self.T_Manodeobra" Multiplicity="1" />
+          <End Role="T_Proyecto" Type="Self.T_Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Manodeobra">
+              <PropertyRef Name="Mdo_ID" />
+            </Principal>
+            <Dependent Role="T_Proyecto">
+              <PropertyRef Name="Mdo_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Proyecto__V_id__5FB337D6">
+          <End Role="T_Vehiculo" Type="Self.T_Vehiculo" Multiplicity="1" />
+          <End Role="T_Proyecto" Type="Self.T_Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Vehiculo">
+              <PropertyRef Name="V_ID" />
+            </Principal>
+            <Dependent Role="T_Proyecto">
+              <PropertyRef Name="V_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Vehicul__CI_ID__398D8EEE">
+          <End Role="T_Cliente" Type="Self.T_Cliente" Multiplicity="1" />
+          <End Role="T_Vehiculo" Type="Self.T_Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Cliente">
+              <PropertyRef Name="CI_ID" />
+            </Principal>
+            <Dependent Role="T_Vehiculo">
+              <PropertyRef Name="CI_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBTallerModelStoreContainer">
+          <EntitySet Name="T_Actividad" EntityType="Self.T_Actividad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Bitacora" EntityType="Self.T_Bitacora" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Caja" EntityType="Self.T_Caja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Cliente" EntityType="Self.T_Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Detallefactura" EntityType="Self.T_Detallefactura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Empleado" EntityType="Self.T_Empleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Estacion" EntityType="Self.T_Estacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Factura" EntityType="Self.T_Factura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Gastos" EntityType="Self.T_Gastos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Manodeobra" EntityType="Self.T_Manodeobra" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Mecanico" EntityType="Self.T_Mecanico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Pago" EntityType="Self.T_Pago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Pedido" EntityType="Self.T_Pedido" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Producto" EntityType="Self.T_Producto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Proveedores" EntityType="Self.T_Proveedores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Proyecto" EntityType="Self.T_Proyecto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Vehiculo" EntityType="Self.T_Vehiculo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__T_Activid__Pr_Id__5535A963" Association="Self.FK__T_Activid__Pr_Id__5535A963">
+            <End Role="T_Producto" EntitySet="T_Producto" />
+            <End Role="T_Actividad" EntitySet="T_Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Activida__M_Id__5441852A" Association="Self.FK__T_Activida__M_Id__5441852A">
+            <End Role="T_Mecanico" EntitySet="T_Mecanico" />
+            <End Role="T_Actividad" EntitySet="T_Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Bitacora__E_Id__6FE99F9F" Association="Self.FK__T_Bitacora__E_Id__6FE99F9F">
+            <End Role="T_Empleado" EntitySet="T_Empleado" />
+            <End Role="T_Bitacora" EntitySet="T_Bitacora" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Caja__E_Id__46E78A0C" Association="Self.FK__T_Caja__E_Id__46E78A0C">
+            <End Role="T_Empleado" EntitySet="T_Empleado" />
+            <End Role="T_Caja" EntitySet="T_Caja" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Detalle__Fc_id__656C112C" Association="Self.FK__T_Detalle__Fc_id__656C112C">
+            <End Role="T_Factura" EntitySet="T_Factura" />
+            <End Role="T_Detallefactura" EntitySet="T_Detallefactura" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Detalle__Mdo_I__6477ECF3" Association="Self.FK__T_Detalle__Mdo_I__6477ECF3">
+            <End Role="T_Manodeobra" EntitySet="T_Manodeobra" />
+            <End Role="T_Detallefactura" EntitySet="T_Detallefactura" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Detalle__Pr_Id__6383C8BA" Association="Self.FK__T_Detalle__Pr_Id__6383C8BA">
+            <End Role="T_Producto" EntitySet="T_Producto" />
+            <End Role="T_Detallefactura" EntitySet="T_Detallefactura" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Estacio__Ac_Id__5812160E" Association="Self.FK__T_Estacio__Ac_Id__5812160E">
+            <End Role="T_Actividad" EntitySet="T_Actividad" />
+            <End Role="T_Estacion" EntitySet="T_Estacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Factura__C_Id__4BAC3F29" Association="Self.FK__T_Factura__C_Id__4BAC3F29">
+            <End Role="T_Caja" EntitySet="T_Caja" />
+            <End Role="T_Factura" EntitySet="T_Factura" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Gastos__E_Id__68487DD7" Association="Self.FK__T_Gastos__E_Id__68487DD7">
+            <End Role="T_Empleado" EntitySet="T_Empleado" />
+            <End Role="T_Gastos" EntitySet="T_Gastos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Gastos__Pd_Id__693CA210" Association="Self.FK__T_Gastos__Pd_Id__693CA210">
+            <End Role="T_Pedido" EntitySet="T_Pedido" />
+            <End Role="T_Gastos" EntitySet="T_Gastos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Mecanico__E_ID__440B1D61" Association="Self.FK__T_Mecanico__E_ID__440B1D61">
+            <End Role="T_Empleado" EntitySet="T_Empleado" />
+            <End Role="T_Mecanico" EntitySet="T_Mecanico" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Pago__C_Id__6D0D32F4" Association="Self.FK__T_Pago__C_Id__6D0D32F4">
+            <End Role="T_Caja" EntitySet="T_Caja" />
+            <End Role="T_Pago" EntitySet="T_Pago" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Pago__G_Id__6C190EBB" Association="Self.FK__T_Pago__G_Id__6C190EBB">
+            <End Role="T_Gastos" EntitySet="T_Gastos" />
+            <End Role="T_Pago" EntitySet="T_Pago" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Pedido__Pr_Id__5AEE82B9" Association="Self.FK__T_Pedido__Pr_Id__5AEE82B9">
+            <End Role="T_Producto" EntitySet="T_Producto" />
+            <End Role="T_Pedido" EntitySet="T_Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Producto__P_Id__5165187F" Association="Self.FK__T_Producto__P_Id__5165187F">
+            <End Role="T_Proveedores" EntitySet="T_Proveedores" />
+            <End Role="T_Producto" EntitySet="T_Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Proyect__Es_Id__5DCAEF64" Association="Self.FK__T_Proyect__Es_Id__5DCAEF64">
+            <End Role="T_Estacion" EntitySet="T_Estacion" />
+            <End Role="T_Proyecto" EntitySet="T_Proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Proyect__Mdo_I__5EBF139D" Association="Self.FK__T_Proyect__Mdo_I__5EBF139D">
+            <End Role="T_Manodeobra" EntitySet="T_Manodeobra" />
+            <End Role="T_Proyecto" EntitySet="T_Proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Proyecto__V_id__5FB337D6" Association="Self.FK__T_Proyecto__V_id__5FB337D6">
+            <End Role="T_Vehiculo" EntitySet="T_Vehiculo" />
+            <End Role="T_Proyecto" EntitySet="T_Proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Vehicul__CI_ID__398D8EEE" Association="Self.FK__T_Vehicul__CI_ID__398D8EEE">
+            <End Role="T_Cliente" EntitySet="T_Cliente" />
+            <End Role="T_Vehiculo" EntitySet="T_Vehiculo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBTallerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="T_Actividad">
+          <Key>
+            <PropertyRef Name="Ac_Id" />
+          </Key>
+          <Property Name="Ac_Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ac_Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ac_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="M_Id" Type="Int32" Nullable="false" />
+          <Property Name="Pr_Id" Type="Int32" />
+          <Property Name="Pr_Cantidad" Type="Int32" />
+          <NavigationProperty Name="T_Producto" Relationship="Self.FK__T_Activid__Pr_Id__5535A963" FromRole="T_Actividad" ToRole="T_Producto" />
+          <NavigationProperty Name="T_Mecanico" Relationship="Self.FK__T_Activida__M_Id__5441852A" FromRole="T_Actividad" ToRole="T_Mecanico" />
+          <NavigationProperty Name="T_Estacion" Relationship="Self.FK__T_Estacio__Ac_Id__5812160E" FromRole="T_Actividad" ToRole="T_Estacion" />
+        </EntityType>
+        <EntityType Name="T_Bitacora">
+          <Key>
+            <PropertyRef Name="B_Id" />
+          </Key>
+          <Property Name="B_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="B_Formulario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="B_Funcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="B_Llave" Type="Int32" Nullable="false" />
+          <Property Name="E_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="T_Empleado" Relationship="Self.FK__T_Bitacora__E_Id__6FE99F9F" FromRole="T_Bitacora" ToRole="T_Empleado" />
+        </EntityType>
+        <EntityType Name="T_Caja">
+          <Key>
+            <PropertyRef Name="C_Id" />
+          </Key>
+          <Property Name="C_SaldoFinal" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="C_SaldoInicial" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="C_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="E_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="T_Empleado" Relationship="Self.FK__T_Caja__E_Id__46E78A0C" FromRole="T_Caja" ToRole="T_Empleado" />
+          <NavigationProperty Name="T_Factura" Relationship="Self.FK__T_Factura__C_Id__4BAC3F29" FromRole="T_Caja" ToRole="T_Factura" />
+          <NavigationProperty Name="T_Pago" Relationship="Self.FK__T_Pago__C_Id__6D0D32F4" FromRole="T_Caja" ToRole="T_Pago" />
+        </EntityType>
+        <EntityType Name="T_Cliente">
+          <Key>
+            <PropertyRef Name="CI_ID" />
+          </Key>
+          <Property Name="CI_Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CI_Identificacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CI_Nombre1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CI_Nombre2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CI_Apellido1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CI_Apellido2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CI_Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CI_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="T_Vehiculo" Relationship="Self.FK__T_Vehicul__CI_ID__398D8EEE" FromRole="T_Cliente" ToRole="T_Vehiculo" />
+        </EntityType>
+        <EntityType Name="T_Detallefactura">
+          <Key>
+            <PropertyRef Name="Pr_Id" />
+            <PropertyRef Name="Mdo_Id" />
+            <PropertyRef Name="Fc_id" />
+          </Key>
+          <Property Name="Pr_Id" Type="Int32" Nullable="false" />
+          <Property Name="Mdo_Id" Type="Int32" Nullable="false" />
+          <Property Name="DF_Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="C_Id" Type="Int32" Nullable="false" />
+          <Property Name="Fc_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="T_Factura" Relationship="Self.FK__T_Detalle__Fc_id__656C112C" FromRole="T_Detallefactura" ToRole="T_Factura" />
+          <NavigationProperty Name="T_Manodeobra" Relationship="Self.FK__T_Detalle__Mdo_I__6477ECF3" FromRole="T_Detallefactura" ToRole="T_Manodeobra" />
+          <NavigationProperty Name="T_Producto" Relationship="Self.FK__T_Detalle__Pr_Id__6383C8BA" FromRole="T_Detallefactura" ToRole="T_Producto" />
+        </EntityType>
+        <EntityType Name="T_Empleado">
+          <Key>
+            <PropertyRef Name="E_ID" />
+          </Key>
+          <Property Name="E_Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="E_edad" Type="Int32" Nullable="false" />
+          <Property Name="E_Nombre1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="E_Nombre2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="E_Apellido1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="E_Apellido2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="E_Salario" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="E_TipoSalario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="E_Tipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="E_Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="E_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="E_Identificacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="E_Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="E_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="T_Bitacora" Relationship="Self.FK__T_Bitacora__E_Id__6FE99F9F" FromRole="T_Empleado" ToRole="T_Bitacora" />
+          <NavigationProperty Name="T_Caja" Relationship="Self.FK__T_Caja__E_Id__46E78A0C" FromRole="T_Empleado" ToRole="T_Caja" />
+          <NavigationProperty Name="T_Gastos" Relationship="Self.FK__T_Gastos__E_Id__68487DD7" FromRole="T_Empleado" ToRole="T_Gastos" />
+          <NavigationProperty Name="T_Mecanico" Relationship="Self.FK__T_Mecanico__E_ID__440B1D61" FromRole="T_Empleado" ToRole="T_Mecanico" />
+        </EntityType>
+        <EntityType Name="T_Estacion">
+          <Key>
+            <PropertyRef Name="Es_Id" />
+          </Key>
+          <Property Name="Es_Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ac_Id" Type="Int32" Nullable="false" />
+          <Property Name="Es_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="T_Actividad" Relationship="Self.FK__T_Estacio__Ac_Id__5812160E" FromRole="T_Estacion" ToRole="T_Actividad" />
+          <NavigationProperty Name="T_Proyecto" Relationship="Self.FK__T_Proyect__Es_Id__5DCAEF64" FromRole="T_Estacion" ToRole="T_Proyecto" />
+        </EntityType>
+        <EntityType Name="T_Factura">
+          <Key>
+            <PropertyRef Name="Fc_Id" />
+          </Key>
+          <Property Name="Fc_Impuesto" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="Fc_Total" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="Fc_Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Fc_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fc_Descuento" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="FC_Subtotal" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="C_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="T_Caja" Relationship="Self.FK__T_Factura__C_Id__4BAC3F29" FromRole="T_Factura" ToRole="T_Caja" />
+          <NavigationProperty Name="T_Detallefactura" Relationship="Self.FK__T_Detalle__Fc_id__656C112C" FromRole="T_Factura" ToRole="T_Detallefactura" />
+        </EntityType>
+        <EntityType Name="T_Gastos">
+          <Key>
+            <PropertyRef Name="G_Id" />
+          </Key>
+          <Property Name="E_Id" Type="Int32" />
+          <Property Name="Pd_Id" Type="Int32" />
+          <Property Name="G_FacturaID" Type="Int32" />
+          <Property Name="G_Estado" Type="Boolean" Nullable="false" />
+          <Property Name="G_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="T_Empleado" Relationship="Self.FK__T_Gastos__E_Id__68487DD7" FromRole="T_Gastos" ToRole="T_Empleado" />
+          <NavigationProperty Name="T_Pedido" Relationship="Self.FK__T_Gastos__Pd_Id__693CA210" FromRole="T_Gastos" ToRole="T_Pedido" />
+          <NavigationProperty Name="T_Pago" Relationship="Self.FK__T_Pago__G_Id__6C190EBB" FromRole="T_Gastos" ToRole="T_Pago" />
+        </EntityType>
+        <EntityType Name="T_Manodeobra">
+          <Key>
+            <PropertyRef Name="Mdo_ID" />
+          </Key>
+          <Property Name="Mdo_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mdo_Monto" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="Mdo_TipoActividad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="T_Detallefactura" Relationship="Self.FK__T_Detalle__Mdo_I__6477ECF3" FromRole="T_Manodeobra" ToRole="T_Detallefactura" />
+          <NavigationProperty Name="T_Proyecto" Relationship="Self.FK__T_Proyect__Mdo_I__5EBF139D" FromRole="T_Manodeobra" ToRole="T_Proyecto" />
+        </EntityType>
+        <EntityType Name="T_Mecanico">
+          <Key>
+            <PropertyRef Name="M_ID" />
+          </Key>
+          <Property Name="E_ID" Type="Int32" Nullable="false" />
+          <Property Name="M_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="M_Especialidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="M_Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="T_Actividad" Relationship="Self.FK__T_Activida__M_Id__5441852A" FromRole="T_Mecanico" ToRole="T_Actividad" />
+          <NavigationProperty Name="T_Empleado" Relationship="Self.FK__T_Mecanico__E_ID__440B1D61" FromRole="T_Mecanico" ToRole="T_Empleado" />
+        </EntityType>
+        <EntityType Name="T_Pago">
+          <Key>
+            <PropertyRef Name="G_Id" />
+            <PropertyRef Name="C_Id" />
+          </Key>
+          <Property Name="G_Id" Type="Int32" Nullable="false" />
+          <Property Name="C_Id" Type="Int32" Nullable="false" />
+          <Property Name="Pag_Cantidad" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <NavigationProperty Name="T_Caja" Relationship="Self.FK__T_Pago__C_Id__6D0D32F4" FromRole="T_Pago" ToRole="T_Caja" />
+          <NavigationProperty Name="T_Gastos" Relationship="Self.FK__T_Pago__G_Id__6C190EBB" FromRole="T_Pago" ToRole="T_Gastos" />
+        </EntityType>
+        <EntityType Name="T_Pedido">
+          <Key>
+            <PropertyRef Name="Pd_Id" />
+          </Key>
+          <Property Name="Pd_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pr_Id" Type="Int32" Nullable="false" />
+          <Property Name="Pd_Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Pd_Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pd_PrecioUnitario" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <NavigationProperty Name="T_Gastos" Relationship="Self.FK__T_Gastos__Pd_Id__693CA210" FromRole="T_Pedido" ToRole="T_Gastos" />
+          <NavigationProperty Name="T_Producto" Relationship="Self.FK__T_Pedido__Pr_Id__5AEE82B9" FromRole="T_Pedido" ToRole="T_Producto" />
+        </EntityType>
+        <EntityType Name="T_Producto">
+          <Key>
+            <PropertyRef Name="Pr_Id" />
+          </Key>
+          <Property Name="Pr_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="P_Id" Type="Int32" Nullable="false" />
+          <Property Name="Pr_CodigoRefaccion" Type="Int32" Nullable="false" />
+          <Property Name="Pr_Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pr_Existencia" Type="Int32" Nullable="false" />
+          <Property Name="Pr_Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pr_Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pr_PrecioUnitario" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="Pr_Descuento" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="Pr_ExistenciaMin" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="T_Actividad" Relationship="Self.FK__T_Activid__Pr_Id__5535A963" FromRole="T_Producto" ToRole="T_Actividad" />
+          <NavigationProperty Name="T_Detallefactura" Relationship="Self.FK__T_Detalle__Pr_Id__6383C8BA" FromRole="T_Producto" ToRole="T_Detallefactura" />
+          <NavigationProperty Name="T_Pedido" Relationship="Self.FK__T_Pedido__Pr_Id__5AEE82B9" FromRole="T_Producto" ToRole="T_Pedido" />
+          <NavigationProperty Name="T_Proveedores" Relationship="Self.FK__T_Producto__P_Id__5165187F" FromRole="T_Producto" ToRole="T_Proveedores" />
+        </EntityType>
+        <EntityType Name="T_Proveedores">
+          <Key>
+            <PropertyRef Name="P_Id" />
+          </Key>
+          <Property Name="P_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="P_Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="P_FormaPago" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="P_Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="T_Producto" Relationship="Self.FK__T_Producto__P_Id__5165187F" FromRole="T_Proveedores" ToRole="T_Producto" />
+        </EntityType>
+        <EntityType Name="T_Proyecto">
+          <Key>
+            <PropertyRef Name="Pry_Id" />
+          </Key>
+          <Property Name="Es_Id" Type="Int32" Nullable="false" />
+          <Property Name="Mdo_Id" Type="Int32" Nullable="false" />
+          <Property Name="Pry_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="V_id" Type="Int32" Nullable="false" />
+          <Property Name="Pry_Comentario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="T_Estacion" Relationship="Self.FK__T_Proyect__Es_Id__5DCAEF64" FromRole="T_Proyecto" ToRole="T_Estacion" />
+          <NavigationProperty Name="T_Manodeobra" Relationship="Self.FK__T_Proyect__Mdo_I__5EBF139D" FromRole="T_Proyecto" ToRole="T_Manodeobra" />
+          <NavigationProperty Name="T_Vehiculo" Relationship="Self.FK__T_Proyecto__V_id__5FB337D6" FromRole="T_Proyecto" ToRole="T_Vehiculo" />
+        </EntityType>
+        <EntityType Name="T_Vehiculo">
+          <Key>
+            <PropertyRef Name="V_ID" />
+          </Key>
+          <Property Name="CI_ID" Type="Int32" Nullable="false" />
+          <Property Name="V_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="V_Color" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="V_Estado" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="V_Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="V_Modelo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="V_Placa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="T_Cliente" Relationship="Self.FK__T_Vehicul__CI_ID__398D8EEE" FromRole="T_Vehiculo" ToRole="T_Cliente" />
+          <NavigationProperty Name="T_Proyecto" Relationship="Self.FK__T_Proyecto__V_id__5FB337D6" FromRole="T_Vehiculo" ToRole="T_Proyecto" />
+        </EntityType>
+        <Association Name="FK__T_Activid__Pr_Id__5535A963">
+          <End Role="T_Producto" Type="Self.T_Producto" Multiplicity="0..1" />
+          <End Role="T_Actividad" Type="Self.T_Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Producto">
+              <PropertyRef Name="Pr_Id" />
+            </Principal>
+            <Dependent Role="T_Actividad">
+              <PropertyRef Name="Pr_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Activida__M_Id__5441852A">
+          <End Role="T_Mecanico" Type="Self.T_Mecanico" Multiplicity="1" />
+          <End Role="T_Actividad" Type="Self.T_Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Mecanico">
+              <PropertyRef Name="M_ID" />
+            </Principal>
+            <Dependent Role="T_Actividad">
+              <PropertyRef Name="M_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Estacio__Ac_Id__5812160E">
+          <End Role="T_Actividad" Type="Self.T_Actividad" Multiplicity="1" />
+          <End Role="T_Estacion" Type="Self.T_Estacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Actividad">
+              <PropertyRef Name="Ac_Id" />
+            </Principal>
+            <Dependent Role="T_Estacion">
+              <PropertyRef Name="Ac_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Bitacora__E_Id__6FE99F9F">
+          <End Role="T_Empleado" Type="Self.T_Empleado" Multiplicity="1" />
+          <End Role="T_Bitacora" Type="Self.T_Bitacora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Empleado">
+              <PropertyRef Name="E_ID" />
+            </Principal>
+            <Dependent Role="T_Bitacora">
+              <PropertyRef Name="E_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Caja__E_Id__46E78A0C">
+          <End Role="T_Empleado" Type="Self.T_Empleado" Multiplicity="1" />
+          <End Role="T_Caja" Type="Self.T_Caja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Empleado">
+              <PropertyRef Name="E_ID" />
+            </Principal>
+            <Dependent Role="T_Caja">
+              <PropertyRef Name="E_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Factura__C_Id__4BAC3F29">
+          <End Role="T_Caja" Type="Self.T_Caja" Multiplicity="1" />
+          <End Role="T_Factura" Type="Self.T_Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Caja">
+              <PropertyRef Name="C_Id" />
+            </Principal>
+            <Dependent Role="T_Factura">
+              <PropertyRef Name="C_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Pago__C_Id__6D0D32F4">
+          <End Role="T_Caja" Type="Self.T_Caja" Multiplicity="1" />
+          <End Role="T_Pago" Type="Self.T_Pago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Caja">
+              <PropertyRef Name="C_Id" />
+            </Principal>
+            <Dependent Role="T_Pago">
+              <PropertyRef Name="C_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Vehicul__CI_ID__398D8EEE">
+          <End Role="T_Cliente" Type="Self.T_Cliente" Multiplicity="1" />
+          <End Role="T_Vehiculo" Type="Self.T_Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Cliente">
+              <PropertyRef Name="CI_ID" />
+            </Principal>
+            <Dependent Role="T_Vehiculo">
+              <PropertyRef Name="CI_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Detalle__Fc_id__656C112C">
+          <End Role="T_Factura" Type="Self.T_Factura" Multiplicity="1" />
+          <End Role="T_Detallefactura" Type="Self.T_Detallefactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Factura">
+              <PropertyRef Name="Fc_Id" />
+            </Principal>
+            <Dependent Role="T_Detallefactura">
+              <PropertyRef Name="Fc_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Detalle__Mdo_I__6477ECF3">
+          <End Role="T_Manodeobra" Type="Self.T_Manodeobra" Multiplicity="1" />
+          <End Role="T_Detallefactura" Type="Self.T_Detallefactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Manodeobra">
+              <PropertyRef Name="Mdo_ID" />
+            </Principal>
+            <Dependent Role="T_Detallefactura">
+              <PropertyRef Name="Mdo_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Detalle__Pr_Id__6383C8BA">
+          <End Role="T_Producto" Type="Self.T_Producto" Multiplicity="1" />
+          <End Role="T_Detallefactura" Type="Self.T_Detallefactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Producto">
+              <PropertyRef Name="Pr_Id" />
+            </Principal>
+            <Dependent Role="T_Detallefactura">
+              <PropertyRef Name="Pr_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Gastos__E_Id__68487DD7">
+          <End Role="T_Empleado" Type="Self.T_Empleado" Multiplicity="0..1" />
+          <End Role="T_Gastos" Type="Self.T_Gastos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Empleado">
+              <PropertyRef Name="E_ID" />
+            </Principal>
+            <Dependent Role="T_Gastos">
+              <PropertyRef Name="E_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Mecanico__E_ID__440B1D61">
+          <End Role="T_Empleado" Type="Self.T_Empleado" Multiplicity="1" />
+          <End Role="T_Mecanico" Type="Self.T_Mecanico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Empleado">
+              <PropertyRef Name="E_ID" />
+            </Principal>
+            <Dependent Role="T_Mecanico">
+              <PropertyRef Name="E_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Proyect__Es_Id__5DCAEF64">
+          <End Role="T_Estacion" Type="Self.T_Estacion" Multiplicity="1" />
+          <End Role="T_Proyecto" Type="Self.T_Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Estacion">
+              <PropertyRef Name="Es_Id" />
+            </Principal>
+            <Dependent Role="T_Proyecto">
+              <PropertyRef Name="Es_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Gastos__Pd_Id__693CA210">
+          <End Role="T_Pedido" Type="Self.T_Pedido" Multiplicity="0..1" />
+          <End Role="T_Gastos" Type="Self.T_Gastos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Pedido">
+              <PropertyRef Name="Pd_Id" />
+            </Principal>
+            <Dependent Role="T_Gastos">
+              <PropertyRef Name="Pd_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Pago__G_Id__6C190EBB">
+          <End Role="T_Gastos" Type="Self.T_Gastos" Multiplicity="1" />
+          <End Role="T_Pago" Type="Self.T_Pago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Gastos">
+              <PropertyRef Name="G_Id" />
+            </Principal>
+            <Dependent Role="T_Pago">
+              <PropertyRef Name="G_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Proyect__Mdo_I__5EBF139D">
+          <End Role="T_Manodeobra" Type="Self.T_Manodeobra" Multiplicity="1" />
+          <End Role="T_Proyecto" Type="Self.T_Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Manodeobra">
+              <PropertyRef Name="Mdo_ID" />
+            </Principal>
+            <Dependent Role="T_Proyecto">
+              <PropertyRef Name="Mdo_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Pedido__Pr_Id__5AEE82B9">
+          <End Role="T_Producto" Type="Self.T_Producto" Multiplicity="1" />
+          <End Role="T_Pedido" Type="Self.T_Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Producto">
+              <PropertyRef Name="Pr_Id" />
+            </Principal>
+            <Dependent Role="T_Pedido">
+              <PropertyRef Name="Pr_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Producto__P_Id__5165187F">
+          <End Role="T_Proveedores" Type="Self.T_Proveedores" Multiplicity="1" />
+          <End Role="T_Producto" Type="Self.T_Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Proveedores">
+              <PropertyRef Name="P_Id" />
+            </Principal>
+            <Dependent Role="T_Producto">
+              <PropertyRef Name="P_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Proyecto__V_id__5FB337D6">
+          <End Role="T_Vehiculo" Type="Self.T_Vehiculo" Multiplicity="1" />
+          <End Role="T_Proyecto" Type="Self.T_Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Vehiculo">
+              <PropertyRef Name="V_ID" />
+            </Principal>
+            <Dependent Role="T_Proyecto">
+              <PropertyRef Name="V_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBTallerEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="T_Actividad" EntityType="Self.T_Actividad" />
+          <EntitySet Name="T_Bitacora" EntityType="Self.T_Bitacora" />
+          <EntitySet Name="T_Caja" EntityType="Self.T_Caja" />
+          <EntitySet Name="T_Cliente" EntityType="Self.T_Cliente" />
+          <EntitySet Name="T_Detallefactura" EntityType="Self.T_Detallefactura" />
+          <EntitySet Name="T_Empleado" EntityType="Self.T_Empleado" />
+          <EntitySet Name="T_Estacion" EntityType="Self.T_Estacion" />
+          <EntitySet Name="T_Factura" EntityType="Self.T_Factura" />
+          <EntitySet Name="T_Gastos" EntityType="Self.T_Gastos" />
+          <EntitySet Name="T_Manodeobra" EntityType="Self.T_Manodeobra" />
+          <EntitySet Name="T_Mecanico" EntityType="Self.T_Mecanico" />
+          <EntitySet Name="T_Pago" EntityType="Self.T_Pago" />
+          <EntitySet Name="T_Pedido" EntityType="Self.T_Pedido" />
+          <EntitySet Name="T_Producto" EntityType="Self.T_Producto" />
+          <EntitySet Name="T_Proveedores" EntityType="Self.T_Proveedores" />
+          <EntitySet Name="T_Proyecto" EntityType="Self.T_Proyecto" />
+          <EntitySet Name="T_Vehiculo" EntityType="Self.T_Vehiculo" />
+          <AssociationSet Name="FK__T_Activid__Pr_Id__5535A963" Association="Self.FK__T_Activid__Pr_Id__5535A963">
+            <End Role="T_Producto" EntitySet="T_Producto" />
+            <End Role="T_Actividad" EntitySet="T_Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Activida__M_Id__5441852A" Association="Self.FK__T_Activida__M_Id__5441852A">
+            <End Role="T_Mecanico" EntitySet="T_Mecanico" />
+            <End Role="T_Actividad" EntitySet="T_Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Estacio__Ac_Id__5812160E" Association="Self.FK__T_Estacio__Ac_Id__5812160E">
+            <End Role="T_Actividad" EntitySet="T_Actividad" />
+            <End Role="T_Estacion" EntitySet="T_Estacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Bitacora__E_Id__6FE99F9F" Association="Self.FK__T_Bitacora__E_Id__6FE99F9F">
+            <End Role="T_Empleado" EntitySet="T_Empleado" />
+            <End Role="T_Bitacora" EntitySet="T_Bitacora" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Caja__E_Id__46E78A0C" Association="Self.FK__T_Caja__E_Id__46E78A0C">
+            <End Role="T_Empleado" EntitySet="T_Empleado" />
+            <End Role="T_Caja" EntitySet="T_Caja" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Factura__C_Id__4BAC3F29" Association="Self.FK__T_Factura__C_Id__4BAC3F29">
+            <End Role="T_Caja" EntitySet="T_Caja" />
+            <End Role="T_Factura" EntitySet="T_Factura" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Pago__C_Id__6D0D32F4" Association="Self.FK__T_Pago__C_Id__6D0D32F4">
+            <End Role="T_Caja" EntitySet="T_Caja" />
+            <End Role="T_Pago" EntitySet="T_Pago" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Vehicul__CI_ID__398D8EEE" Association="Self.FK__T_Vehicul__CI_ID__398D8EEE">
+            <End Role="T_Cliente" EntitySet="T_Cliente" />
+            <End Role="T_Vehiculo" EntitySet="T_Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Detalle__Fc_id__656C112C" Association="Self.FK__T_Detalle__Fc_id__656C112C">
+            <End Role="T_Factura" EntitySet="T_Factura" />
+            <End Role="T_Detallefactura" EntitySet="T_Detallefactura" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Detalle__Mdo_I__6477ECF3" Association="Self.FK__T_Detalle__Mdo_I__6477ECF3">
+            <End Role="T_Manodeobra" EntitySet="T_Manodeobra" />
+            <End Role="T_Detallefactura" EntitySet="T_Detallefactura" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Detalle__Pr_Id__6383C8BA" Association="Self.FK__T_Detalle__Pr_Id__6383C8BA">
+            <End Role="T_Producto" EntitySet="T_Producto" />
+            <End Role="T_Detallefactura" EntitySet="T_Detallefactura" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Gastos__E_Id__68487DD7" Association="Self.FK__T_Gastos__E_Id__68487DD7">
+            <End Role="T_Empleado" EntitySet="T_Empleado" />
+            <End Role="T_Gastos" EntitySet="T_Gastos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Mecanico__E_ID__440B1D61" Association="Self.FK__T_Mecanico__E_ID__440B1D61">
+            <End Role="T_Empleado" EntitySet="T_Empleado" />
+            <End Role="T_Mecanico" EntitySet="T_Mecanico" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Proyect__Es_Id__5DCAEF64" Association="Self.FK__T_Proyect__Es_Id__5DCAEF64">
+            <End Role="T_Estacion" EntitySet="T_Estacion" />
+            <End Role="T_Proyecto" EntitySet="T_Proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Gastos__Pd_Id__693CA210" Association="Self.FK__T_Gastos__Pd_Id__693CA210">
+            <End Role="T_Pedido" EntitySet="T_Pedido" />
+            <End Role="T_Gastos" EntitySet="T_Gastos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Pago__G_Id__6C190EBB" Association="Self.FK__T_Pago__G_Id__6C190EBB">
+            <End Role="T_Gastos" EntitySet="T_Gastos" />
+            <End Role="T_Pago" EntitySet="T_Pago" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Proyect__Mdo_I__5EBF139D" Association="Self.FK__T_Proyect__Mdo_I__5EBF139D">
+            <End Role="T_Manodeobra" EntitySet="T_Manodeobra" />
+            <End Role="T_Proyecto" EntitySet="T_Proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Pedido__Pr_Id__5AEE82B9" Association="Self.FK__T_Pedido__Pr_Id__5AEE82B9">
+            <End Role="T_Producto" EntitySet="T_Producto" />
+            <End Role="T_Pedido" EntitySet="T_Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Producto__P_Id__5165187F" Association="Self.FK__T_Producto__P_Id__5165187F">
+            <End Role="T_Proveedores" EntitySet="T_Proveedores" />
+            <End Role="T_Producto" EntitySet="T_Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Proyecto__V_id__5FB337D6" Association="Self.FK__T_Proyecto__V_id__5FB337D6">
+            <End Role="T_Vehiculo" EntitySet="T_Vehiculo" />
+            <End Role="T_Proyecto" EntitySet="T_Proyecto" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBTallerModelStoreContainer" CdmEntityContainer="DBTallerEntities2">
+          <EntitySetMapping Name="T_Actividad">
+            <EntityTypeMapping TypeName="DBTallerModel.T_Actividad">
+              <MappingFragment StoreEntitySet="T_Actividad">
+                <ScalarProperty Name="Ac_Descripcion" ColumnName="Ac_Descripcion" />
+                <ScalarProperty Name="Ac_Nombre" ColumnName="Ac_Nombre" />
+                <ScalarProperty Name="Ac_Id" ColumnName="Ac_Id" />
+                <ScalarProperty Name="M_Id" ColumnName="M_Id" />
+                <ScalarProperty Name="Pr_Id" ColumnName="Pr_Id" />
+                <ScalarProperty Name="Pr_Cantidad" ColumnName="Pr_Cantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Bitacora">
+            <EntityTypeMapping TypeName="DBTallerModel.T_Bitacora">
+              <MappingFragment StoreEntitySet="T_Bitacora">
+                <ScalarProperty Name="B_Id" ColumnName="B_Id" />
+                <ScalarProperty Name="B_Formulario" ColumnName="B_Formulario" />
+                <ScalarProperty Name="B_Funcion" ColumnName="B_Funcion" />
+                <ScalarProperty Name="B_Llave" ColumnName="B_Llave" />
+                <ScalarProperty Name="E_Id" ColumnName="E_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Caja">
+            <EntityTypeMapping TypeName="DBTallerModel.T_Caja">
+              <MappingFragment StoreEntitySet="T_Caja">
+                <ScalarProperty Name="C_SaldoFinal" ColumnName="C_SaldoFinal" />
+                <ScalarProperty Name="C_SaldoInicial" ColumnName="C_SaldoInicial" />
+                <ScalarProperty Name="C_Id" ColumnName="C_Id" />
+                <ScalarProperty Name="E_Id" ColumnName="E_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Cliente">
+            <EntityTypeMapping TypeName="DBTallerModel.T_Cliente">
+              <MappingFragment StoreEntitySet="T_Cliente">
+                <ScalarProperty Name="CI_Direccion" ColumnName="CI_Direccion" />
+                <ScalarProperty Name="CI_Identificacion" ColumnName="CI_Identificacion" />
+                <ScalarProperty Name="CI_Nombre1" ColumnName="CI_Nombre1" />
+                <ScalarProperty Name="CI_Nombre2" ColumnName="CI_Nombre2" />
+                <ScalarProperty Name="CI_Apellido1" ColumnName="CI_Apellido1" />
+                <ScalarProperty Name="CI_Apellido2" ColumnName="CI_Apellido2" />
+                <ScalarProperty Name="CI_Telefono" ColumnName="CI_Telefono" />
+                <ScalarProperty Name="CI_ID" ColumnName="CI_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Detallefactura">
+            <EntityTypeMapping TypeName="DBTallerModel.T_Detallefactura">
+              <MappingFragment StoreEntitySet="T_Detallefactura">
+                <ScalarProperty Name="Pr_Id" ColumnName="Pr_Id" />
+                <ScalarProperty Name="Mdo_Id" ColumnName="Mdo_Id" />
+                <ScalarProperty Name="DF_Cantidad" ColumnName="DF_Cantidad" />
+                <ScalarProperty Name="C_Id" ColumnName="C_Id" />
+                <ScalarProperty Name="Fc_id" ColumnName="Fc_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Empleado">
+            <EntityTypeMapping TypeName="DBTallerModel.T_Empleado">
+              <MappingFragment StoreEntitySet="T_Empleado">
+                <ScalarProperty Name="E_Direccion" ColumnName="E_Direccion" />
+                <ScalarProperty Name="E_edad" ColumnName="E_edad" />
+                <ScalarProperty Name="E_Nombre1" ColumnName="E_Nombre1" />
+                <ScalarProperty Name="E_Nombre2" ColumnName="E_Nombre2" />
+                <ScalarProperty Name="E_Apellido1" ColumnName="E_Apellido1" />
+                <ScalarProperty Name="E_Apellido2" ColumnName="E_Apellido2" />
+                <ScalarProperty Name="E_Salario" ColumnName="E_Salario" />
+                <ScalarProperty Name="E_TipoSalario" ColumnName="E_TipoSalario" />
+                <ScalarProperty Name="E_Tipo" ColumnName="E_Tipo" />
+                <ScalarProperty Name="E_Telefono" ColumnName="E_Telefono" />
+                <ScalarProperty Name="E_ID" ColumnName="E_ID" />
+                <ScalarProperty Name="E_Identificacion" ColumnName="E_Identificacion" />
+                <ScalarProperty Name="E_Usuario" ColumnName="E_Usuario" />
+                <ScalarProperty Name="E_Password" ColumnName="E_Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Estacion">
+            <EntityTypeMapping TypeName="DBTallerModel.T_Estacion">
+              <MappingFragment StoreEntitySet="T_Estacion">
+                <ScalarProperty Name="Es_Nombre" ColumnName="Es_Nombre" />
+                <ScalarProperty Name="Ac_Id" ColumnName="Ac_Id" />
+                <ScalarProperty Name="Es_Id" ColumnName="Es_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Factura">
+            <EntityTypeMapping TypeName="DBTallerModel.T_Factura">
+              <MappingFragment StoreEntitySet="T_Factura">
+                <ScalarProperty Name="Fc_Impuesto" ColumnName="Fc_Impuesto" />
+                <ScalarProperty Name="Fc_Total" ColumnName="Fc_Total" />
+                <ScalarProperty Name="Fc_Fecha" ColumnName="Fc_Fecha" />
+                <ScalarProperty Name="Fc_Id" ColumnName="Fc_Id" />
+                <ScalarProperty Name="Fc_Descuento" ColumnName="Fc_Descuento" />
+                <ScalarProperty Name="FC_Subtotal" ColumnName="FC_Subtotal" />
+                <ScalarProperty Name="C_Id" ColumnName="C_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Gastos">
+            <EntityTypeMapping TypeName="DBTallerModel.T_Gastos">
+              <MappingFragment StoreEntitySet="T_Gastos">
+                <ScalarProperty Name="E_Id" ColumnName="E_Id" />
+                <ScalarProperty Name="Pd_Id" ColumnName="Pd_Id" />
+                <ScalarProperty Name="G_FacturaID" ColumnName="G_FacturaID" />
+                <ScalarProperty Name="G_Estado" ColumnName="G_Estado" />
+                <ScalarProperty Name="G_Id" ColumnName="G_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Manodeobra">
+            <EntityTypeMapping TypeName="DBTallerModel.T_Manodeobra">
+              <MappingFragment StoreEntitySet="T_Manodeobra">
+                <ScalarProperty Name="Mdo_ID" ColumnName="Mdo_ID" />
+                <ScalarProperty Name="Mdo_Monto" ColumnName="Mdo_Monto" />
+                <ScalarProperty Name="Mdo_TipoActividad" ColumnName="Mdo_TipoActividad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Mecanico">
+            <EntityTypeMapping TypeName="DBTallerModel.T_Mecanico">
+              <MappingFragment StoreEntitySet="T_Mecanico">
+                <ScalarProperty Name="E_ID" ColumnName="E_ID" />
+                <ScalarProperty Name="M_ID" ColumnName="M_ID" />
+                <ScalarProperty Name="M_Especialidad" ColumnName="M_Especialidad" />
+                <ScalarProperty Name="M_Estado" ColumnName="M_Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Pago">
+            <EntityTypeMapping TypeName="DBTallerModel.T_Pago">
+              <MappingFragment StoreEntitySet="T_Pago">
+                <ScalarProperty Name="G_Id" ColumnName="G_Id" />
+                <ScalarProperty Name="C_Id" ColumnName="C_Id" />
+                <ScalarProperty Name="Pag_Cantidad" ColumnName="Pag_Cantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Pedido">
+            <EntityTypeMapping TypeName="DBTallerModel.T_Pedido">
+              <MappingFragment StoreEntitySet="T_Pedido">
+                <ScalarProperty Name="Pd_Id" ColumnName="Pd_Id" />
+                <ScalarProperty Name="Pr_Id" ColumnName="Pr_Id" />
+                <ScalarProperty Name="Pd_Cantidad" ColumnName="Pd_Cantidad" />
+                <ScalarProperty Name="Pd_Descripcion" ColumnName="Pd_Descripcion" />
+                <ScalarProperty Name="Pd_PrecioUnitario" ColumnName="Pd_PrecioUnitario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Producto">
+            <EntityTypeMapping TypeName="DBTallerModel.T_Producto">
+              <MappingFragment StoreEntitySet="T_Producto">
+                <ScalarProperty Name="Pr_Id" ColumnName="Pr_Id" />
+                <ScalarProperty Name="P_Id" ColumnName="P_Id" />
+                <ScalarProperty Name="Pr_CodigoRefaccion" ColumnName="Pr_CodigoRefaccion" />
+                <ScalarProperty Name="Pr_Descripcion" ColumnName="Pr_Descripcion" />
+                <ScalarProperty Name="Pr_Existencia" ColumnName="Pr_Existencia" />
+                <ScalarProperty Name="Pr_Marca" ColumnName="Pr_Marca" />
+                <ScalarProperty Name="Pr_Nombre" ColumnName="Pr_Nombre" />
+                <ScalarProperty Name="Pr_PrecioUnitario" ColumnName="Pr_PrecioUnitario" />
+                <ScalarProperty Name="Pr_Descuento" ColumnName="Pr_Descuento" />
+                <ScalarProperty Name="Pr_ExistenciaMin" ColumnName="Pr_ExistenciaMin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Proveedores">
+            <EntityTypeMapping TypeName="DBTallerModel.T_Proveedores">
+              <MappingFragment StoreEntitySet="T_Proveedores">
+                <ScalarProperty Name="P_Id" ColumnName="P_Id" />
+                <ScalarProperty Name="P_Descripcion" ColumnName="P_Descripcion" />
+                <ScalarProperty Name="P_FormaPago" ColumnName="P_FormaPago" />
+                <ScalarProperty Name="P_Nombre" ColumnName="P_Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Proyecto">
+            <EntityTypeMapping TypeName="DBTallerModel.T_Proyecto">
+              <MappingFragment StoreEntitySet="T_Proyecto">
+                <ScalarProperty Name="Es_Id" ColumnName="Es_Id" />
+                <ScalarProperty Name="Mdo_Id" ColumnName="Mdo_Id" />
+                <ScalarProperty Name="Pry_Id" ColumnName="Pry_Id" />
+                <ScalarProperty Name="V_id" ColumnName="V_id" />
+                <ScalarProperty Name="Pry_Comentario" ColumnName="Pry_Comentario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Vehiculo">
+            <EntityTypeMapping TypeName="DBTallerModel.T_Vehiculo">
+              <MappingFragment StoreEntitySet="T_Vehiculo">
+                <ScalarProperty Name="CI_ID" ColumnName="CI_ID" />
+                <ScalarProperty Name="V_ID" ColumnName="V_ID" />
+                <ScalarProperty Name="V_Color" ColumnName="V_Color" />
+                <ScalarProperty Name="V_Estado" ColumnName="V_Estado" />
+                <ScalarProperty Name="V_Marca" ColumnName="V_Marca" />
+                <ScalarProperty Name="V_Modelo" ColumnName="V_Modelo" />
+                <ScalarProperty Name="V_Placa" ColumnName="V_Placa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

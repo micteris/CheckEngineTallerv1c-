@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="47d7405fad874ce591f10281e26bf1fc" Name="Diagram1" ZoomLevel="47">
+        <EntityTypeShape EntityType="DBTallerModel.T_Actividad" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTallerModel.T_Bitacora" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTallerModel.T_Caja" Width="1.5" PointX="3.75" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTallerModel.T_Cliente" Width="1.5" PointX="5.25" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTallerModel.T_Detallefactura" Width="1.5" PointX="8.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTallerModel.T_Empleado" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTallerModel.T_Estacion" Width="1.5" PointX="7.5" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTallerModel.T_Factura" Width="1.5" PointX="6" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTallerModel.T_Gastos" Width="1.5" PointX="7.5" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTallerModel.T_Manodeobra" Width="1.5" PointX="7.5" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTallerModel.T_Mecanico" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTallerModel.T_Pago" Width="1.5" PointX="9.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTallerModel.T_Pedido" Width="1.5" PointX="5.25" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTallerModel.T_Producto" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTallerModel.T_Proveedores" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTallerModel.T_Proyecto" Width="1.5" PointX="9.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTallerModel.T_Vehiculo" Width="1.5" PointX="7.5" PointY="16.25" IsExpanded="true" />
+        <AssociationConnector Association="DBTallerModel.FK__T_Activid__Pr_Id__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="DBTallerModel.FK__T_Activida__M_Id__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="DBTallerModel.FK__T_Estacio__Ac_Id__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="DBTallerModel.FK__T_Bitacora__E_Id__6FE99F9F" ManuallyRouted="false" />
+        <AssociationConnector Association="DBTallerModel.FK__T_Caja__E_Id__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="DBTallerModel.FK__T_Factura__C_Id__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="DBTallerModel.FK__T_Pago__C_Id__6D0D32F4" ManuallyRouted="false" />
+        <AssociationConnector Association="DBTallerModel.FK__T_Vehicul__CI_ID__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="DBTallerModel.FK__T_Detalle__Fc_id__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="DBTallerModel.FK__T_Detalle__Mdo_I__6477ECF3" ManuallyRouted="false" />
+        <AssociationConnector Association="DBTallerModel.FK__T_Detalle__Pr_Id__6383C8BA" ManuallyRouted="false" />
+        <AssociationConnector Association="DBTallerModel.FK__T_Gastos__E_Id__68487DD7" ManuallyRouted="false" />
+        <AssociationConnector Association="DBTallerModel.FK__T_Mecanico__E_ID__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="DBTallerModel.FK__T_Proyect__Es_Id__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="DBTallerModel.FK__T_Gastos__Pd_Id__693CA210" ManuallyRouted="false" />
+        <AssociationConnector Association="DBTallerModel.FK__T_Pago__G_Id__6C190EBB" ManuallyRouted="false" />
+        <AssociationConnector Association="DBTallerModel.FK__T_Proyect__Mdo_I__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="DBTallerModel.FK__T_Pedido__Pr_Id__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="DBTallerModel.FK__T_Producto__P_Id__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="DBTallerModel.FK__T_Proyecto__V_id__5FB337D6" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

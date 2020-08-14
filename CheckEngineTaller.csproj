@@ -369,9 +369,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Modelo\dbTaller.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>dbTaller.edmx</DependentUpon>

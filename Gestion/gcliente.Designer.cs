@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.lblGestionCliente = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.regresarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.txtDireccion = new System.Windows.Forms.TextBox();
             this.btnGuardarCl = new System.Windows.Forms.Button();
@@ -44,9 +47,7 @@
             this.lblApellido1 = new System.Windows.Forms.Label();
             this.lblNombre2 = new System.Windows.Forms.Label();
             this.lblNombre1 = new System.Windows.Forms.Label();
-            this.lblGestionCliente = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.regresarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnActualizarCl = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -68,6 +69,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.btnActualizarCl);
             this.splitContainer1.Panel2.Controls.Add(this.txtTelefono);
             this.splitContainer1.Panel2.Controls.Add(this.txtDireccion);
             this.splitContainer1.Panel2.Controls.Add(this.btnGuardarCl);
@@ -86,6 +88,36 @@
             this.splitContainer1.Size = new System.Drawing.Size(800, 450);
             this.splitContainer1.SplitterDistance = 76;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // lblGestionCliente
+            // 
+            this.lblGestionCliente.AutoSize = true;
+            this.lblGestionCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(157)))), ((int)(((byte)(157)))));
+            this.lblGestionCliente.Location = new System.Drawing.Point(345, 43);
+            this.lblGestionCliente.Name = "lblGestionCliente";
+            this.lblGestionCliente.Size = new System.Drawing.Size(111, 17);
+            this.lblGestionCliente.TabIndex = 6;
+            this.lblGestionCliente.Text = "Gestion Clientes";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.regresarToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip1.TabIndex = 7;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // regresarToolStripMenuItem
+            // 
+            this.regresarToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.regresarToolStripMenuItem.Name = "regresarToolStripMenuItem";
+            this.regresarToolStripMenuItem.Size = new System.Drawing.Size(79, 24);
+            this.regresarToolStripMenuItem.Text = "Regresar";
+            this.regresarToolStripMenuItem.Click += new System.EventHandler(this.regresarToolStripMenuItem_Click);
             // 
             // txtTelefono
             // 
@@ -224,35 +256,17 @@
             this.lblNombre1.TabIndex = 14;
             this.lblNombre1.Text = "Primer Nombre";
             // 
-            // lblGestionCliente
+            // btnActualizarCl
             // 
-            this.lblGestionCliente.AutoSize = true;
-            this.lblGestionCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(157)))), ((int)(((byte)(157)))));
-            this.lblGestionCliente.Location = new System.Drawing.Point(345, 43);
-            this.lblGestionCliente.Name = "lblGestionCliente";
-            this.lblGestionCliente.Size = new System.Drawing.Size(111, 17);
-            this.lblGestionCliente.TabIndex = 6;
-            this.lblGestionCliente.Text = "Gestion Clientes";
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.regresarToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
-            this.menuStrip1.TabIndex = 7;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // regresarToolStripMenuItem
-            // 
-            this.regresarToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.regresarToolStripMenuItem.Name = "regresarToolStripMenuItem";
-            this.regresarToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
-            this.regresarToolStripMenuItem.Text = "Regresar";
-            this.regresarToolStripMenuItem.Click += new System.EventHandler(this.regresarToolStripMenuItem_Click);
+            this.btnActualizarCl.Location = new System.Drawing.Point(441, 291);
+            this.btnActualizarCl.Margin = new System.Windows.Forms.Padding(4);
+            this.btnActualizarCl.Name = "btnActualizarCl";
+            this.btnActualizarCl.Size = new System.Drawing.Size(100, 28);
+            this.btnActualizarCl.TabIndex = 29;
+            this.btnActualizarCl.Text = "Actualizar";
+            this.btnActualizarCl.UseVisualStyleBackColor = true;
+            this.btnActualizarCl.Visible = false;
+            this.btnActualizarCl.Click += new System.EventHandler(this.btnActualizarCl_Click);
             // 
             // gcliente
             // 
@@ -299,5 +313,6 @@
         private System.Windows.Forms.Label lblGestionCliente;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem regresarToolStripMenuItem;
+        private System.Windows.Forms.Button btnActualizarCl;
     }
 }

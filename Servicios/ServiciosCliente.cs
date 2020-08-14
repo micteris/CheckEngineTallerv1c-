@@ -12,21 +12,24 @@ namespace CheckEngineTaller.Servicios
         public ServiciosCliente()
         {
         }
-        public bool AgregarCliente(string nombre1, string nombre2, string apellido1, string apellido2, string identidad, string telefono, string direccion)
+        public bool AgregarCliente(T_Cliente tCliente)
         {
             try
             {
                 using (var contexto = new DBTallerEntities2())
                 {
+                    var existCliente = contexto.T_Cliente.FirstOrDefault(f => f.CI_Identificacion == tCliente.CI_Identificacion);
+                    if (existCliente != null) return false;
+
                     var clientes = new T_Cliente
                     {
-                        CI_Nombre1 = nombre1,
-                        CI_Nombre2 = nombre2,
-                        CI_Apellido1 = apellido1,
-                        CI_Apellido2 = apellido2,
-                        CI_Identificacion = identidad,
-                        CI_Telefono = telefono,
-                        CI_Direccion = direccion
+                        CI_Nombre1 = tCliente.CI_Nombre1 ,
+                        CI_Nombre2 = tCliente.CI_Nombre2 ,
+                        CI_Apellido1 = tCliente.CI_Apellido1 ,
+                        CI_Apellido2 = tCliente.CI_Apellido2 ,
+                        CI_Identificacion = tCliente.CI_Identificacion ,
+                        CI_Telefono = tCliente.CI_Telefono ,
+                        CI_Direccion = tCliente.CI_Direccion 
                     };
                     contexto.T_Cliente.Add(clientes);
                     contexto.SaveChanges();
@@ -47,14 +50,14 @@ namespace CheckEngineTaller.Servicios
                 {
                     var ListaClientes = contexto.T_Cliente.Select(s => new
                     {
-                        CI_ID = s.CI_ID,
-                        CI_Nombre1 = s.CI_Nombre1,
-                        CI_Nombre2 = s.CI_Nombre2,
-                        CI_Apellido1 = s.CI_Apellido1,
-                        CI_Apellido2 = s.CI_Apellido2,
-                        CI_Identificacion = s.CI_Identificacion,
-                        CI_Telefono = s.CI_Telefono,
-                        CI_Direccion = s.CI_Direccion
+                        s.CI_ID,
+                        s.CI_Nombre1,
+                        s.CI_Nombre2,
+                        s.CI_Apellido1,
+                        s.CI_Apellido2,
+                        s.CI_Identificacion,
+                        s.CI_Telefono,
+                        s.CI_Direccion
                     }).ToList();
                     return ListaClientes;
                 }
@@ -97,21 +100,22 @@ namespace CheckEngineTaller.Servicios
                 return false;
             }
         }
-        public bool EditarCliente(int? id, string nombre1, string nombre2, string apellido1, string apellido2, string identidad, string telefono, string direccion)
+        public bool EditarCliente(T_Cliente tCliente)
         {
             try
             {
                 using (var contexto = new DBTallerEntities2())
                 {
-                    var clientes = contexto.T_Cliente.Find(id);
+                    var clientes = contexto.T_Cliente.Find(tCliente.CI_ID);
                     if (clientes == null) return false;
-                    clientes.CI_Nombre1 = nombre1;
-                    clientes.CI_Nombre2 = nombre2;
-                    clientes.CI_Apellido1 = apellido1;
-                    clientes.CI_Apellido2 = apellido2;
-                    clientes.CI_Identificacion = identidad;
-                    clientes.CI_Telefono = telefono;
-                    clientes.CI_Direccion = direccion;
+
+                    clientes.CI_Nombre1 = tCliente.CI_Nombre1;
+                    clientes.CI_Nombre2 = tCliente.CI_Nombre2;
+                    clientes.CI_Apellido1 = tCliente.CI_Apellido1;
+                    clientes.CI_Apellido2 = tCliente.CI_Apellido2;
+                    clientes.CI_Identificacion = tCliente.CI_Identificacion;
+                    clientes.CI_Telefono = tCliente.CI_Telefono;
+                    clientes.CI_Direccion = tCliente.CI_Direccion;
                     contexto.SaveChanges();
                     return true;
                 }
@@ -121,5 +125,6 @@ namespace CheckEngineTaller.Servicios
                 return false;
             }
         }
+        
     }
 }

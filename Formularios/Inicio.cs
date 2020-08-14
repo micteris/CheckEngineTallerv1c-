@@ -21,7 +21,7 @@ namespace CheckEngineTaller
         {
             InitializeComponent();
         }
-        SqlConnection connect = new SqlConnection(@"Data Source=MSI\SQLEXPRESS;Initial Catalog=DBTaller;Integrated Security=True");
+        SqlConnection connect = new SqlConnection(@"Data Source=localhost;Initial Catalog=DBTaller;Integrated Security=True");
         public void log(string Usuario, string Password)
         {
             try

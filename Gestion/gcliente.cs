@@ -8,13 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CheckEngineTaller.Modelo;
+using CheckEngineTaller.Servicios;
+
 namespace CheckEngineTaller.Gestion
 {
     public partial class gcliente : Form
     {
         public int? id;
         T_Cliente clitabla = null;
-        public gcliente(int? id=null)
+        public gcliente(int? id = null)
         {
             InitializeComponent();
 
@@ -22,6 +24,8 @@ namespace CheckEngineTaller.Gestion
             if (id != null)
             {
                 CargaDatos();
+                btnGuardarCl.Visible = false;
+                btnActualizarCl.Visible = true;
             }
         }
         private void CargaDatos()
@@ -40,36 +44,66 @@ namespace CheckEngineTaller.Gestion
         }
         private void btnGuardarCl_Click(object sender, EventArgs e)
         {
-            using (DBTallerEntities2 db = new DBTallerEntities2())
+            try
             {
-                if (id==null)
-                    clitabla = new T_Cliente();
 
-                //T_Cliente tcliente = new T_Cliente();
-                clitabla.CI_Nombre1 = txtNombre1.Text;
-                clitabla.CI_Nombre2 = txtNombre2.Text;
-                clitabla.CI_Apellido1 = txtApellido1.Text;
-                clitabla.CI_Apellido2 = txtApellido2.Text;
-                clitabla.CI_Identificacion = txtIdentidad.Text;
-                clitabla.CI_Telefono = txtTelefono.Text;
-                clitabla.CI_Direccion = txtDireccion.Text;
+                var service = new ServiciosCliente();
 
-                if(id==null)
-                    db.T_Cliente.Add(clitabla);
-                else
+                var tCliente = new T_Cliente
                 {
-                    db.Entry(clitabla).State = System.Data.Entity.EntityState.Modified;
-                }
-                db.SaveChanges();
+                    CI_Nombre1 = txtNombre1.Text,
+                    CI_Nombre2 = txtNombre2.Text,
+                    CI_Apellido1 = txtApellido1.Text,
+                    CI_Apellido2 = txtApellido2.Text,
+                    CI_Identificacion = txtIdentidad.Text,
+                    CI_Telefono = txtTelefono.Text,
+                    CI_Direccion = txtDireccion.Text
+                };
+
+                service.AgregarCliente(tCliente);
 
                 this.Close();
 
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
 
         private void regresarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnActualizarCl_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var service = new ServiciosCliente();
+
+                var tCliente = new T_Cliente
+                {
+                    CI_ID = id.Value,
+                    CI_Nombre1 = txtNombre1.Text,
+                    CI_Nombre2 = txtNombre2.Text,
+                    CI_Apellido1 = txtApellido1.Text,
+                    CI_Apellido2 = txtApellido2.Text,
+                    CI_Identificacion = txtIdentidad.Text,
+                    CI_Telefono = txtTelefono.Text,
+                    CI_Direccion = txtDireccion.Text
+                };
+
+                service.EditarCliente(tCliente);
+
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
     }
 }

@@ -261,6 +261,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Servicios\ServiciosUtil.cs" />
     <Compile Include="Servicios\ServiciosCaja.cs" />
     <Compile Include="Servicios\ServiciosCliente.cs" />
     <Compile Include="Servicios\ServiciosEmpleados.cs" />
@@ -354,6 +355,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>dbTaller.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="App.config" />
     <None Include="Modelo\dbTaller.edmx.diagram">
       <DependentUpon>dbTaller.edmx</DependentUpon>
     </None>

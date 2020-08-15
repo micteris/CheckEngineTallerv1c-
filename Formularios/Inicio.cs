@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using System.Security.Permissions;
 using CheckEngineTaller.formularios;
 using CheckEngineTaller.Gestion;
+using CheckEngineTaller.Servicios;
 //using CheckEngineTaller.model;
 
 namespace CheckEngineTaller
@@ -78,8 +79,16 @@ namespace CheckEngineTaller
 
         private void btnForget_Click(object sender, EventArgs e)
         {
-            gPassword gPassword = new gPassword();
-            gPassword.Show();
+            bool response = ServiciosUtil.RecoveryPassword("0801-1990-10718");
+            if(response)
+            {
+                MessageBox.Show("Se ha generado a su correo los pasos de recuperacion de cuenta. Favor revisar bandeja de SPAM si es necesario.");
+                return;
+            }
+
+            MessageBox.Show("Ha ocurrido un problema.");
+            //gPassword gPassword = new gPassword();
+            //gPassword.Show();
         }
     }
 }

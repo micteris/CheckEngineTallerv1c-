@@ -68,6 +68,7 @@ namespace CheckEngineTaller.Servicios
                 return null;
             }
         }
+
         public T_Cliente ObtenerDetalle(int? id)
         {
             try
@@ -79,6 +80,45 @@ namespace CheckEngineTaller.Servicios
                 }
             }
             catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        public T_Cliente GetClienteByIdentificacion(string identificacion)
+        {
+            try
+            {
+                using (var contexto = new DBTallerEntities2())
+                {
+                    var cliente = contexto.T_Cliente.FirstOrDefault(c => c.CI_Identificacion == identificacion.Trim());
+                    return cliente;
+                }
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        public string GenerateToken(string identificacion)
+        {
+            try
+            {
+                using (var contexto = new DBTallerEntities2())
+                {
+                    var cliente = contexto.T_Cliente.FirstOrDefault(c => c.CI_Identificacion == identificacion);
+                    if (cliente == null) return null;
+
+                    var timeNow = DateTime.Now.ToString();
+                    string token = timeNow.Substring(timeNow.Length-3)+cliente.CI_Identificacion.Substring(10);
+                    //cliente.CI_Token = token;
+                    //contexto.SaveChanges();
+                    return token;
+
+                }
+            }
+            catch (Exception)
             {
                 return null;
             }

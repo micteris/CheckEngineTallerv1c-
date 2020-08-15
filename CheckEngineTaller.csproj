@@ -193,6 +193,8 @@
     <Compile Include="Gestion\gProyectos.Designer.cs">
       <DependentUpon>gProyectos.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModeloVista\GestionClienteViewModel.cs" />
+    <Compile Include="ModeloVista\InicioViewModel.cs" />
     <Compile Include="Modelo\dbTaller.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
